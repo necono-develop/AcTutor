@@ -54,16 +54,35 @@ Current support is intentionally narrow.
 - `AcTutor: Open Favorite Problem`
 - `AcTutor: Open Unsolved Problem`
 
-## Install From VSIX
+## Install
 
-1. Download `actutor-*.vsix` from the GitHub Release.
+AcTutor is not published to the VS Code Marketplace yet.
+
+If a GitHub Release provides `actutor-*.vsix`, install it from VS Code:
+
+1. Download `actutor-*.vsix` from the Release.
 2. Open VS Code.
 3. Open Extensions.
 4. Select `...`.
 5. Select `Install from VSIX...`.
 6. Choose the downloaded VSIX.
-7. Open a practice workspace folder.
-8. Open the AcTutor sidebar.
+
+If no Release asset is available yet, build the VSIX locally:
+
+```bash
+git clone https://github.com/necono-develop/AcTutor.git
+cd AcTutor
+npm install
+npm run package
+```
+
+Then install the generated `actutor-*.vsix` from VS Code:
+
+```text
+Extensions -> ... -> Install from VSIX...
+```
+
+After installation, open a practice workspace folder and open the AcTutor sidebar.
 
 ## Requirements
 
