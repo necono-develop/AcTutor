@@ -1,0 +1,240 @@
+{
+  "name": "actutor",
+  "displayName": "AcTutor",
+  "description": "AtCoder learning harness for VS Code.",
+  "version": "0.0.1",
+  "publisher": "actutor",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Education",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:actutor.hello",
+    "onCommand:actutor.pickProblem",
+    "onCommand:actutor.pickRandomProblem",
+    "onCommand:actutor.setupProblem",
+    "onCommand:actutor.runSampleTests",
+    "onCommand:actutor.copyHintPrompt",
+    "onCommand:actutor.copyReviewPrompt",
+    "onCommand:actutor.copySolutionPrompt",
+    "onCommand:actutor.markSolved",
+    "onCommand:actutor.toggleFavorite",
+    "onCommand:actutor.deleteHistoryEntry",
+    "onCommand:actutor.openNotes",
+    "onCommand:actutor.showHistory",
+    "onCommand:actutor.showFavorites",
+    "onCommand:actutor.showUnsolvedProblems",
+    "onCommand:actutor.openHistoryProblem",
+    "onCommand:actutor.openFavoriteProblem",
+    "onCommand:actutor.openUnsolvedProblem",
+    "onView:actutor.sidebar"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "actutor.hello",
+        "title": "AcTutor: Hello"
+      },
+      {
+        "command": "actutor.pickProblem",
+        "title": "AcTutor: Pick Problem"
+      },
+      {
+        "command": "actutor.pickRandomProblem",
+        "title": "AcTutor: Pick Random Problem"
+      },
+      {
+        "command": "actutor.setupProblem",
+        "title": "AcTutor: Setup Problem"
+      },
+      {
+        "command": "actutor.runSampleTests",
+        "title": "AcTutor: Run Sample Tests"
+      },
+      {
+        "command": "actutor.copyHintPrompt",
+        "title": "AcTutor: Copy Hint Prompt"
+      },
+      {
+        "command": "actutor.copyReviewPrompt",
+        "title": "AcTutor: Copy Review Prompt"
+      },
+      {
+        "command": "actutor.copySolutionPrompt",
+        "title": "AcTutor: Copy Solution Prompt"
+      },
+      {
+        "command": "actutor.markSolved",
+        "title": "AcTutor: Mark as Solved"
+      },
+      {
+        "command": "actutor.toggleFavorite",
+        "title": "AcTutor: Toggle Favorite"
+      },
+      {
+        "command": "actutor.deleteHistoryEntry",
+        "title": "AcTutor: Delete History Entry"
+      },
+      {
+        "command": "actutor.openNotes",
+        "title": "AcTutor: Open Notes"
+      },
+      {
+        "command": "actutor.showHistory",
+        "title": "AcTutor: Show History"
+      },
+      {
+        "command": "actutor.showFavorites",
+        "title": "AcTutor: Show Favorites"
+      },
+      {
+        "command": "actutor.showUnsolvedProblems",
+        "title": "AcTutor: Show Unsolved Problems"
+      },
+      {
+        "command": "actutor.openHistoryProblem",
+        "title": "AcTutor: Open History Problem"
+      },
+      {
+        "command": "actutor.openFavoriteProblem",
+        "title": "AcTutor: Open Favorite Problem"
+      },
+      {
+        "command": "actutor.openUnsolvedProblem",
+        "title": "AcTutor: Open Unsolved Problem"
+      }
+    ],
+    "configuration": {
+      "title": "AcTutor",
+      "properties": {
+        "actutor.language": {
+          "type": "string",
+          "default": "python",
+          "enum": [
+            "python"
+          ],
+          "description": "Primary language for generated solution files."
+        },
+        "actutor.pythonCommand": {
+          "type": "string",
+          "default": "python3",
+          "description": "Python command used by oj test."
+        },
+        "actutor.statementLanguage": {
+          "type": "string",
+          "default": "en",
+          "enum": [
+            "ja",
+            "en",
+            "auto"
+          ],
+          "description": "Preferred language for problem statements when the judge page provides multiple languages."
+        },
+        "actutor.promptLanguage": {
+          "type": "string",
+          "default": "en",
+          "enum": [
+            "ja",
+            "en",
+            "auto"
+          ],
+          "description": "Preferred language for AI prompts. auto follows the statement language."
+        },
+        "actutor.defaultDifficultyMin": {
+          "type": "number",
+          "default": 0,
+          "description": "Default minimum difficulty for problem picking."
+        },
+        "actutor.defaultDifficultyMax": {
+          "type": "number",
+          "default": 200,
+          "description": "Default maximum difficulty for problem picking."
+        },
+        "actutor.workspaceRoot": {
+          "type": "string",
+          "default": "problems",
+          "description": "Directory where problem workspaces are created."
+        },
+        "actutor.enableAiDuringLiveContest": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow prompt generation for live contest problems."
+        },
+        "actutor.promptDefaultMode": {
+          "type": "string",
+          "default": "hint",
+          "enum": [
+            "input_only",
+            "hint",
+            "wa_review",
+            "complexity",
+            "editorial"
+          ],
+          "description": "Default prompt mode."
+        },
+        "actutor.ojCommand": {
+          "type": "string",
+          "default": "oj",
+          "description": "online-judge-tools command path."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "actutor",
+          "title": "AcTutor",
+          "icon": "resources/actutor.svg"
+        }
+      ]
+    },
+    "views": {
+      "actutor": [
+        {
+          "id": "actutor.sidebar",
+          "name": "AcTutor"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "actutor.setupProblem",
+          "when": "view == actutor.sidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "actutor.pickRandomProblem",
+          "when": "view == actutor.sidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "actutor.runSampleTests",
+          "when": "view == actutor.sidebar",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package --allow-missing-repository --no-rewrite-relative-links",
+    "preflight": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/vscode": "1.96.0",
+    "@vscode/vsce": "^3.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  }
+}
