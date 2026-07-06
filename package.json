@@ -3,7 +3,7 @@
   "displayName": "AcTutor",
   "description": "AtCoder learning harness for VS Code.",
   "version": "0.0.1",
-  "publisher": "actutor",
+  "publisher": "necono-develop",
   "license": "MIT",
   "engines": {
     "vscode": "^1.96.0"
